@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My Products</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>My Products</h2>
+    <a th:href="@{/product/new}">Create New Product</a>    <!-- Display message if no products are available -->
+    <div th:if="${#lists.isEmpty(products)}" class="alert alert-warning">
+        You don't have any products yet.
+    </div>
+
+    <!-- List of Products -->
+    <div th:if="${not #lists.isEmpty(products)}">
+        <table class="table table-bordered mt-4">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.id}"></td>
+                <td th:text="${product.title}"></td>
+                <td th:text="${product.description}"></td>
+                <td>
+                    <div class="card-top">
+                        <!-- Delete Product Form with Thymeleaf syntax -->
+                        <form th:action="@{/product/delete/{id}(id=${product.id})}" method="post">
+                            <!-- CSRF Token for security -->
+                            <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+                            <button type="submit" class="btn btn-danger m-3">
+                                Del
+                            </button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
+
+</html>
