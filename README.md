@@ -2,7 +2,7 @@
 
 ## Overview
 
-The WebChat application is a Spring Boot-based web application that allows users to manage and browse articles. It includes functionalities for user registration, login, profile management, and article management. Users can create, view, and delete articles, as well as manage their profiles.
+The Web application is a Spring Boot-based web application that allows users to manage and browse articles. It includes functionalities for user registration, login, profile management, and article management. Users can create, view, and delete articles, as well as manage their profiles.
 
 ## Features
 
